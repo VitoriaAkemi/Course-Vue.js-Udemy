@@ -1,0 +1,45 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+
+    <p>{{contador}}</p>
+    <!-- 'on' indica que um evento ira acontecer, 
+    após o ':' se diz qual evento que ira ocorrer-->
+    <button v-on:click='somar(5)'>Somar</button>
+    <p v-on:mousemove="atualizar">
+        Mouse: {{ x }} e {{ y }}
+        <!-- ao colocar '.' + algum modificador de evento, pode se mudar o comportamento do evento anterior ao '.'-->
+        <span v-on:mousemove.stop=''>Parar Aqui!</span>
+    </p>
+    <label for="input">INPUT</label>
+    <!-- 'keyup' é acionado toda vez que o usuario interage, no caso do input, toda vez que digita,
+    'enter' e 'alt' são as teclas de "condição" para executar determinada função-->
+    <input id="input" type="text" v-on:keyup.enter.alt='exibirAlerta'>
+
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+
+        data:{
+            contador: 0,
+            x: 0,
+            y: 0
+        },
+
+        methods: {
+            somar(passo){
+                this.contador += passo
+            },
+            atualizar(event){
+                this.x = event.clientX
+                this.y = event.clientY
+            },
+            exibirAlerta(){
+                alert('Condições atendidas')
+            }
+        }
+    })
+</script>
+
