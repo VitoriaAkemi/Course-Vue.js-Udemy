@@ -1,7 +1,8 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <div id="app">
-    <input type="text" v-on:input="alterarTitulo">
+    <label for="input">INPUT</label>
+    <input id="input" type="text" v-on:input="alterarTitulo">
     <!-- as chaves duplas referenciam uma variavel ou retorno de metodo em Vue
     porem a exibição só pode ser feita com string,
     não é possivel ter uma variavel e um metodo com mesmos nomes
