@@ -1,0 +1,40 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <input type="text" v-on:input="alterarTitulo">
+    <!-- as chaves duplas referenciam uma variavel ou retorno de metodo em Vue
+    porem a exibição só pode ser feita com string,
+    não é possivel ter uma variavel e um metodo com mesmos nomes
+    o 'once' faz com que o valor não seja atualizado, permanecendo na forma default-->
+    <p v-once>{{ titulo }}</p>
+    <p>{{ saudacao() }}</p>
+    <!--o atributo 'v' referencia uma função Vue,
+        o 'bind' diz qual atributo eu quero usar para inserir valores criados no Vue-->
+    <a v-bind:href="link">Google</a>
+    <hr>
+    <!--'html' faz com que o codigo html do projeto reconheça a variavel passada como trecho de codigo, não uma string-->
+    <p v-html="linkhtml"></p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app', //identificador da div alvo
+
+        data: { // dentro de data se define variaveis
+            titulo: 'Hello World',
+            link: 'http://google.com.br',
+            linkhtml: '<a href="http://google.com.br">Google</a>'
+        },
+
+        methods: {
+            //função que altera o valor da variavel titulo
+            alterarTitulo(event){
+                this.titulo= event.target.value
+            },
+            saudacao: function(){
+                this.titulo = 'Bom Dia'
+                return this.titulo
+            }
+        }
+    })
+</script>
