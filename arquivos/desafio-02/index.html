@@ -3,22 +3,22 @@
 <div id="desafio">
     <!-- 1) Exiba um alert quando o botão for clicado -->
     <div>
-        <button>Exibir Alerta</button>
+        <button v-on:click="alerta">Exibir Alerta</button>
     </div>
     
     <!-- 2) Escute o evento "keydown" e armazene o valor na propriedade
         data (dica: event.target.value) -->
     <div>
-        <label for="input1">INPUT</label>
-        <input id="input1" type="text">
+        <label for="input1">INPUT1</label>
+        <input id="input1" type="text" v-on:keydown="alteraValor">
         <p>{{ valor }}</p>
     </div>
     
     <!-- 3) Ajuste o exemplo 2 para disparar o evento "keydown" somente
         quando a tecla for ENTER -->
     <div>
-        <label for="input2">INPUT</label>
-        <input id="input2" type="text">
+        <label for="input2">INPUT2</label>
+        <input id="input2" type="text" v-on:keydown.enter="alteraValor">
         <p>{{ valor }}</p>
     </div>
 </div>
