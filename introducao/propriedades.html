@@ -1,0 +1,51 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <button v-on:click="aumentar">Aumentar</button>
+    <button v-on:click="contador2++">Aumentar 2</button>
+    <button v-on:click="diminuir">Diminuir</button>
+    <p>Contador: {{ contador }} | {{ contador2 }}</p>
+    <p>Resultado: {{ resultado }}</p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+
+        data:{
+            contador: 0,
+            contador2: 0
+        },
+
+        
+        computed:{  //funcoes que mantem cache, não interferem no codigo todo, somente onde foram chamados
+            resultado(){
+                return this.contador >= 5 ?
+                    'Maior ou igual a 5' : 'Menor que 5'
+            }
+        },
+
+        watch:{
+            // variavel que sera monitorada
+            contador(novo, antigo){ // P1= valor adicionado/atualizado da variavel , P2= antigo valor da variavel 
+                setTimeout(() =>{ // função que controla o tempo 
+                    this.contador = 0
+                }, 2000) //2000 milisegundos = 2 segundos
+            }
+        },
+
+        methods: {
+            aumentar(){
+                this.contador++
+            },
+            diminuir(){
+                this.contador--
+            }
+            // caso deixe como metodo, sera chamado no aumentar e aumentar2, o alvo é somente aumentar
+            // resultado(){  
+            //     return this.contador >= 5 ?
+            //         'Maior ou igual a 5' : 'Menor que 5'
+            // }
+        }
+    })
+</script>
