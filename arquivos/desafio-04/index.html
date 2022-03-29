@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="styles.css">
-<script src="https://unpkg.com/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <div id="desafio">
 	<!-- 1) Iniciar a execução do efeito usando botão. 
@@ -21,7 +21,8 @@
 		(crie classe CSS de exemplo). -->
 	<h2>#03</h2>
 	<div>
-		<input type="text" v-model="classe3">
+		<label for="input1">INPUT1</label>
+		<input type="text" id="input1" v-model="classe3">
 		<div :class="classe3"></div>
 	</div>
 
@@ -29,8 +30,11 @@
     outra classe usando o valor true/false (crie classes CSS de exemplo). -->
 	<h2>#04</h2>
 	<div>
-		<input type="text" v-model="classe4">
-		<input type="text" @input="setPerigo">
+		<label for="input2">INPUT2</label>
+		<input type="text" id="input2" v-model="classe4">
+
+		<label for="input3">INPUT3</label>
+		<input type="text" id="input3" @input="setPerigo">
 		<div :class="[classe4, {perigo}]"></div>
 	</div>
 
@@ -38,7 +42,8 @@
     Associe os estilos a div abaixo  -->
 	<h2>#05</h2>
 	<div>
-		<input type="text" v-model="cor5">
+		<label for="input4">INPUT4</label>
+		<input type="text" id="input4" v-model="cor5">
 		<div :style="[estilo5, {backgroundColor: cor5}]"></div>
 	</div>
 
