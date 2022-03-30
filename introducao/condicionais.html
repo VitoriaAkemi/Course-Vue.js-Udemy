@@ -1,0 +1,37 @@
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <!-- o v-if, v-else-if e v-else só pode ser usado caso for uma tag em seguida da outra, 
+    somente o código html que for atendido pela condicional é implementado na pag e dom-->
+    <!-- a tag template é como uma div, porém não aparece no inspecionar na pag. web-->
+    <template v-if="logado">
+        <p>Usuário logado : {{ nome }}</p>
+    </template>
+    <p v-else-if="anonimo">Navegando como Anônimo</p>
+    <p v-else>Nenhum Usuário logado</p>
+    <!-- '@' = 'v-on', ':' = 'v-bind'-->
+    <button @click="logado = !logado">
+        {{ logado ? 'Sair' : 'Entrar' }}</button>
+
+    <hr>
+    <!-- o 'v-show' mostra ou não a tag, dependendo de um boolean, porém não remove o elemento do código como v-if-->
+    <footer v-show="logado">
+        Desenvolvido pra vc!
+    </footer>
+    <!-- não existe um 'else' para o v-show, a forma de alternar valores é com a negação(!) do atributo-->
+    <footer v-show="!logado">
+        Desenvolvido pra vc que é desconhecido!
+    </footer>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            nome: 'Maria',
+            logado: false,
+            anonimo: true
+        }
+    })
+</script>
