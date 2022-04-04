@@ -1,4 +1,4 @@
-<script src="https://unpkg.com/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
 <div id="desafio">
@@ -7,18 +7,18 @@
     para ver a diferença -->
   <h2>#01</h2>
   <div>
-    <button>Alternar</button>
-    <p>Você quer me ver ...</p>
-    <p>...ou eu</p>
-    <p>Você quer me ver ...</p>
-    <p>...ou eu</p>
+    <button @click="ver = !ver">Alternar</button>
+    <p v-if="ver">Você quer me ver ...</p>
+    <p v-else>...ou eu</p>
+    <p v-show="ver">Você quer me ver ...</p>
+    <p v-show="!ver">...ou eu</p>
   </div>
 
   <!-- 2) Exiba em uma <ul> um array de elementos da sua escolha.
     Imprima também o índice de cada elemento. -->
   <h2>#02</h2>
   <ul>
-    <li></li>
+    <li v-for="(item, i) in array">{{ i }}) {{ item }}</li>
   </ul>
   
   <!-- 3) Imprimir todos os pares de valor-chave do objeto a seguir:
@@ -30,7 +30,9 @@
     Imprima também o índice de cada item. -->
   <h2>#03</h2>
   <ul>
-    <li></li>
+    <li v-for="(atributo, chave, indice) in livro">
+      {{ indice }}) {{ chave }} : {{ atributo}}
+    </li>
   </ul>
   
   <!-- 4) Imprima o seguinte objeto (somente os valores) e
@@ -43,8 +45,16 @@
     (dica: use v-for e v-if na resolução) -->
   <h2>#04</h2>
   <ul>
-    <li>
-    
+    <li v-for="atributo in aluno">
+      <template v-if="!Array.isArray(atributo)">
+        {{ atributo }}
+      </template>
+      <template v-else>
+        Notas:
+        <ul>
+          <li v-for="nota in atributo">{{ nota }}</li>
+        </ul>
+      </template>
     </li>
   </ul>
 </div>
