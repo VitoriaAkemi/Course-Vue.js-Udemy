@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Template script</title>
+</head>
+<body>
+    <div id="app">
+        <!--chamando o componente pelo nome definido no script,
+        o componente será renderizado a mesma quantidade de vezes que for chamado-->
+        <comp></comp>
+        <comp></comp>
+    </div>
+</body>
+</html>
+
+<script>
+    //esta criando um componente e chamando ele de 'comp'
+    Vue.component('comp' , {
+        // dentro do script template pode somente uma tag, 
+        // o html colocado dentro de template será renderizado (el: '#app')
+        template:`
+            <div>
+                <h1>{{ aula }}</h1>
+                <h1>{{ modulo }}</h1>
+                <button @click="alterarAula">Alterar Aula</button>
+                <button @click="alterarModulo">Alterar Módulo</button>
+            </div>
+        `,
+        // data deve virar uma função para caso o componente se repita, suas instancias sejam independentes e não as mesmas
+        data: function() {
+            return{
+            aula: 'Aula Montando Instância Vue',
+            modulo: 'Módulo: Instância Vue'}
+        },
+        methods: {
+            alterarAula(){
+                this.aula += "#"
+            },
+            alterarModulo(){
+                this.modulo += "#"
+            }
+        }
+    })
+
+    const vm = new Vue({
+        el: '#app'
+    })
+</script>
