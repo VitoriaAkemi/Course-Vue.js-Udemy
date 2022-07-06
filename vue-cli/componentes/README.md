@@ -1,4 +1,4 @@
-# projeto-plugins
+# componentes
 
 ## Project setup
 ```
